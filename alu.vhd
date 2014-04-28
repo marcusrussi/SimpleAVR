@@ -9,8 +9,8 @@ use ieee.numeric_std.all;
 --Add without carry 				----> 0001	(Done)
 
 --Subtract without carry 		----> 0010	(Mike)
---Multiply signed 				----> 0011	(Mike)
---Logical Shift Left				----> 0100	(Mike)
+--Multiply signed 				----> 0011	(Mike) --Fuck Never Mind
+--Logical Shift Left				----> 0100	(Mike) --Doesn't need another code (Just addition)
 --Logical Shift Right 			----> 0101	(Mike)
 
 --Logical AND						----> 0110	(Marcus)
@@ -50,7 +50,8 @@ begin
 			
 	   -- Actions the ALU can perform
 		else
-			if(Sel(3 downto 0) = "1111") then
+			-- Addition
+			if(Sel(3 downto 0) = "0001") then
 				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_A + INPUT_B),8));
 				
 			--Logical AND						----> 0110	(Marcus)
@@ -64,6 +65,14 @@ begin
 			--Exclusive OR  		 			----> 1000	(Marcus)
 			elsif(Sel(3 downto 0) = "0111") then	
 				DataOut <= SrcA xor SrcB;
+				
+			-- Subtraction	
+			elsif(Sel (3 downto 0) = "0010") then
+				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_A - INPUT_B),8));
+			
+			-- Logical Shift Right 
+			elsif(Sel (3 downto 0) = "0100") then
+				DataOut <= "0" & SrcA(7 downto 1);
 				
 			end if;
 		end if;

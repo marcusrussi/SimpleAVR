@@ -224,6 +224,17 @@ PC_Instance : PC
 -- AND (Logical And)       0010 00rd dddd rrrr
 -- OR (Logical Or)         0010 10rd dddd rrrr
 -- XOR (Exclusive Or)      0010 01rd dddd rrrr
+-- LDS (Load)						1010 0kkk dddd kkkk
+-- STD (Store)						1010 1kkk dddd kkkk
+-- Nop (No Op)						0000 0000 0000 0000
+-- ADD (Add)						0000 11rd dddd rrrr
+--	SUB (Subtract)					0001 10rd dddd rrrr
+-- LSL (Logical Shift Left)	0000 11dd dddd dddd
+-- LSR (Logical Shift Right)	1001 010d dddd 0110
+-- RJMPT (Relative Jump)		1100 kkkk kkkk kkkk
+-- AND (Logical And)       0010 00rd dddd rrrr
+-- OR (Logical Or)         0010 10rd dddd rrrr
+-- XOR (Exclusive Or)      0010 01rd dddd rrrr
 	
 decode_function	: process (RESET_IN, Inst)
 begin 
@@ -264,7 +275,7 @@ begin
 			RF_WD3 <= ALU_OUT;
 			
 			--ALU Signals
-			ALU_SELECT <= "1111";
+			ALU_SELECT <= "0001";
 			ALU_INPUT1 <= RF_RD1;
 			ALU_INPUT2 <= RF_RD2;
 
@@ -273,8 +284,53 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 		
+			--Subtract-----------------------------------------------------------------
+			elsif (Inst(15 downto 10) = "000110") then
+			
+			--Program counter signals 
+			PC_INPUT <= "000000000000";
+			
+			--Register File signals
+			RF_A1 <= Inst(9) & Inst(3 downto 0); 
+			RF_A2 <= Inst(8 downto 4);
+			RF_A3 <= Inst(8 downto 4);
+			RF_We <= '1';
+			RF_WD3 <= ALU_OUT;
+			
+			--ALU Signals
+			ALU_SELECT <= "0010";
+			ALU_INPUT1 <= RF_RD1;
+			ALU_INPUT2 <= RF_RD2;
 
+			--Data Memory Signals
+			DM_addr <= "0000000";
+			DM_in <= "00000000";
+			DM_we <= '0';
 		
+			--Logical Shift Right-----------------------------------------------------------------
+			elsif ((Inst(15 downto 9) = "1001010")) then
+				if(Inst(3 downto 0) = "0110") then
+				
+				--Program counter signals 
+				PC_INPUT <= "000000000000";
+			
+				--Register File signals
+				RF_A1 <= Inst(8 downto 4);
+				RF_A3 <= Inst(8 downto 4);
+				RF_We <= '1';
+				RF_WD3 <= ALU_OUT;
+				
+				--ALU Signals
+				ALU_SELECT <= "0101";
+				ALU_INPUT1 <= RF_RD1;
+
+				--Data Memory Signals
+				DM_addr <= "0000000";
+				DM_in <= "00000000";
+				DM_we <= '0';
+				
+				end if;
+			
 			--Store--------------------------------------------------------------------------
 			elsif(Inst(15 downto 11) = "10101") then
 			
