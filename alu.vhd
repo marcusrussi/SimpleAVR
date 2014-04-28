@@ -38,8 +38,8 @@ SIGNAL INPUT_B : INTEGER;
 
 BEGIN 
 
-INPUT_A <= TO_INTEGER(UNSIGNED(SrcA)); 
-INPUT_B <= TO_INTEGER(UNSIGNED(SrcB));
+INPUT_A <= TO_INTEGER(SIGNED(SrcA)); 
+INPUT_B <= TO_INTEGER(SIGNED(SrcB));
 
 
 add : process (Sel, RESET_IN, INPUT_A, INPUT_B)
@@ -51,7 +51,20 @@ begin
 	   -- Actions the ALU can perform
 		else
 			if(Sel(3 downto 0) = "1111") then
-				DataOut <= STD_LOGIC_VECTOR(TO_UNSIGNED((INPUT_A + INPUT_B),8));
+				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_A + INPUT_B),8));
+				
+			--Logical AND						----> 0110	(Marcus)
+			elsif(Sel(3 downto 0) = "0110") then
+				DataOut <= SrcA and SrcB;
+				
+			--Logical OR						----> 0111	(Marcus)
+			elsif(Sel(3 downto 0) = "0111") then
+				DataOut <= SrcA or SrcB;
+			
+			--Exclusive OR  		 			----> 1000	(Marcus)
+			elsif(Sel(3 downto 0) = "0111") then	
+				DataOut <= SrcA xor SrcB;
+				
 			end if;
 		end if;
 	

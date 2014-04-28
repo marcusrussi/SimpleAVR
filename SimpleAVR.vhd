@@ -221,6 +221,9 @@ PC_Instance : PC
 -- Nop (No Op)					0000 0000 0000 0000
 -- ADD (Add)					0000 11rd dddd rrrr
 -- RJMPT (Relative Jump)	1100 kkkk kkkk kkkk
+-- AND (Logical And)       0010 00rd dddd rrrr
+-- OR (Logical Or)         0010 10rd dddd rrrr
+-- XOR (Exclusive Or)      0010 01rd dddd rrrr
 	
 decode_function	: process (RESET_IN, Inst)
 begin 
@@ -330,6 +333,75 @@ begin
 			--ALU signals
 			ALU_SELECT <= "0000";
 			
+			--Data Memory Signals
+			DM_addr <= "0000000";
+			DM_in <= "00000000";
+			DM_we <= '0';
+			
+			--And------------------------------------------------------------
+			elsif (Inst(15 downto 10) = "001000") then
+			
+			--Program counter signals 
+			PC_INPUT <= "000000000000";
+			
+			--Register File signals
+			RF_A1 <= Inst(9) & Inst(3 downto 0); 
+			RF_A2 <= Inst(8 downto 4);
+			RF_A3 <= Inst(8 downto 4);
+			RF_We <= '1';
+			RF_WD3 <= ALU_OUT;
+			
+			--ALU Signals
+			ALU_SELECT <= "0110";
+			ALU_INPUT1 <= RF_RD1;
+			ALU_INPUT2 <= RF_RD2;
+
+			--Data Memory Signals
+			DM_addr <= "0000000";
+			DM_in <= "00000000";
+			DM_we <= '0';
+			
+			--Or-------------------------------------------------------------
+			elsif (Inst(15 downto 10) = "001010") then
+			
+			--Program counter signals 
+			PC_INPUT <= "000000000000";
+			
+			--Register File signals
+			RF_A1 <= Inst(9) & Inst(3 downto 0); 
+			RF_A2 <= Inst(8 downto 4);
+			RF_A3 <= Inst(8 downto 4);
+			RF_We <= '1';
+			RF_WD3 <= ALU_OUT;
+			
+			--ALU Signals
+			ALU_SELECT <= "0111";
+			ALU_INPUT1 <= RF_RD1;
+			ALU_INPUT2 <= RF_RD2;
+
+			--Data Memory Signals
+			DM_addr <= "0000000";
+			DM_in <= "00000000";
+			DM_we <= '0';
+			
+			--Xor------------------------------------------------------------
+			elsif (Inst(15 downto 10) = "001001") then
+			
+			--Program counter signals 
+			PC_INPUT <= "000000000000";
+			
+			--Register File signals
+			RF_A1 <= Inst(9) & Inst(3 downto 0); 
+			RF_A2 <= Inst(8 downto 4);
+			RF_A3 <= Inst(8 downto 4);
+			RF_We <= '1';
+			RF_WD3 <= ALU_OUT;
+			
+			--ALU Signals
+			ALU_SELECT <= "1000";
+			ALU_INPUT1 <= RF_RD1;
+			ALU_INPUT2 <= RF_RD2;
+
 			--Data Memory Signals
 			DM_addr <= "0000000";
 			DM_in <= "00000000";
