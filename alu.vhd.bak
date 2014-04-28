@@ -1,0 +1,26 @@
+
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all; 
+
+ENTITY ALU IS 
+	PORT
+	(
+		CLK_IN    : IN STD_LOGIC;
+		RESET_IN  : IN STD_LOGIC;
+		Sel       : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+		SrcA      : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		SrcB      : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+		DataOut   : OUT STD_LOGIC_VECTOR(7 downto 0)
+	);
+END ALU;
+
+ARCHITECTURE ALU_arch OF ALU IS 
+
+
+
+BEGIN 
+
+
+
+END ALU_arch;

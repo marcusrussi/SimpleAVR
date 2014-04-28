@@ -1,0 +1,70 @@
+
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.all; 
+
+ENTITY SimpleAVR IS 
+	PORT
+	(
+		SW_IN :  IN  STD_LOGIC_VECTOR(2 DOWNTO 0); -- input slide switches
+		HEX3 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+--		will need to add a vector for HEX Display Two;
+--		will need to add a vector for HEX Display One;
+		HEX0 :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0);
+		LEDR :  OUT  STD_LOGIC_VECTOR(2 DOWNTO 0)
+	);
+END SimpleAVR;
+
+ARCHITECTURE SimpleAVR_arch OF SimpleAVR IS 
+
+-- Components
+
+COMPONENT SevSegDec IS
+PORT (
+		IN_D :  IN  STD_LOGIC_VECTOR(3 DOWNTO 0);
+		HEX  :  OUT  STD_LOGIC_VECTOR(6 DOWNTO 0)
+		);
+END COMPONENT;
+
+COMPONENT Scrolling_decoder IS
+PORT (
+		SEL_IN :  IN  STD_LOGIC_VECTOR(2 downto 0);
+		MSG_OUT :  OUT  STD_LOGIC_VECTOR(15 DOWNTO 0)
+	 );
+END COMPONENT;
+
+-- Signals
+
+SIGNAL	MESSAGE :  STD_LOGIC_VECTOR(15 DOWNTO 0);
+
+BEGIN 
+
+
+LEDR <= SW_IN; -- Useful for debugging
+
+SCR_DEC : Scrolling_decoder -- component name that was listed previously
+PORT MAP (
+SEL_IN => SW_IN, -- Load the message to be displayed 
+MSG_OUT => MESSAGE);  -- MESSAGE local signal that enables me to wire components together
+
+HEX_3 : SevSegDec -- HEX_3 is an instantiation of component SevSegDec
+PORT MAP (
+IN_D => MESSAGE(15 DOWNTO 12), -- bits 15-12
+HEX => HEX3);
+
+-- arbitrary name here : component name here (vhd file name)
+--PORT MAP (
+--IN_D => local wiring(11 DOWNTO 8)), -- bits 11-8
+--HEX => name of vector from line 11);
+
+-- arbitrary name here : component name here (vhd file name)
+--PORT MAP (
+--IN_D => local wiring(7 DOWNTO 4)), -- bits 7-4
+--HEX => name of vector from line 12);
+
+HEX_0 : SevSegDec 
+PORT MAP (
+IN_D => MESSAGE(3 DOWNTO 0), -- bits 3-0
+HEX => HEX0);
+
+END Top_beh;

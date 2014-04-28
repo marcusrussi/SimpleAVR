@@ -1,0 +1,189 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'PC:PC_Instance|PC[0]'
+Slack : -7.987
+TNS   : -216.121
+
+Type  : Slow Model Setup 'ALU_SELECT[0]'
+Slack : -6.823
+TNS   : -49.733
+
+Type  : Slow Model Setup 'clock_divider:CLK_GEN|CLK_1Hz_INT'
+Slack : -5.887
+TNS   : -1504.643
+
+Type  : Slow Model Setup 'CLK_IN'
+Slack : -2.425
+TNS   : -24.005
+
+Type  : Slow Model Setup 'clock_divider:CLK_GEN|CLK_1Khz_INT'
+Slack : -0.906
+TNS   : -2.365
+
+Type  : Slow Model Setup 'clock_divider:CLK_GEN|CLK_10Hz_INT'
+Slack : -0.728
+TNS   : -1.964
+
+Type  : Slow Model Setup 'clock_divider:CLK_GEN|CLK_100Hz_INT'
+Slack : -0.690
+TNS   : -1.876
+
+Type  : Slow Model Hold 'PC:PC_Instance|PC[0]'
+Slack : -3.752
+TNS   : -66.359
+
+Type  : Slow Model Hold 'clock_divider:CLK_GEN|CLK_1Hz_INT'
+Slack : -2.733
+TNS   : -3.860
+
+Type  : Slow Model Hold 'CLK_IN'
+Slack : -2.683
+TNS   : -2.683
+
+Type  : Slow Model Hold 'clock_divider:CLK_GEN|CLK_1Khz_INT'
+Slack : -2.380
+TNS   : -2.380
+
+Type  : Slow Model Hold 'clock_divider:CLK_GEN|CLK_100Hz_INT'
+Slack : -2.297
+TNS   : -2.297
+
+Type  : Slow Model Hold 'clock_divider:CLK_GEN|CLK_10Hz_INT'
+Slack : -2.251
+TNS   : -2.251
+
+Type  : Slow Model Hold 'ALU_SELECT[0]'
+Slack : 4.651
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'PC:PC_Instance|PC[0]'
+Slack : -1.227
+TNS   : -13.342
+
+Type  : Slow Model Removal 'PC:PC_Instance|PC[0]'
+Slack : -3.452
+TNS   : -37.855
+
+Type  : Slow Model Minimum Pulse Width 'CLK_IN'
+Slack : -1.631
+TNS   : -21.183
+
+Type  : Slow Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_1Hz_INT'
+Slack : -0.611
+TNS   : -361.712
+
+Type  : Slow Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_100Hz_INT'
+Slack : -0.611
+TNS   : -6.110
+
+Type  : Slow Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_10Hz_INT'
+Slack : -0.611
+TNS   : -6.110
+
+Type  : Slow Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_1Khz_INT'
+Slack : -0.611
+TNS   : -6.110
+
+Type  : Slow Model Minimum Pulse Width 'PC:PC_Instance|PC[0]'
+Slack : -0.032
+TNS   : -2.240
+
+Type  : Slow Model Minimum Pulse Width 'ALU_SELECT[0]'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Fast Model Setup 'PC:PC_Instance|PC[0]'
+Slack : -2.534
+TNS   : -58.539
+
+Type  : Fast Model Setup 'ALU_SELECT[0]'
+Slack : -2.296
+TNS   : -16.355
+
+Type  : Fast Model Setup 'clock_divider:CLK_GEN|CLK_1Hz_INT'
+Slack : -1.914
+TNS   : -469.617
+
+Type  : Fast Model Setup 'CLK_IN'
+Slack : -0.364
+TNS   : -1.379
+
+Type  : Fast Model Setup 'clock_divider:CLK_GEN|CLK_1Khz_INT'
+Slack : 0.235
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clock_divider:CLK_GEN|CLK_100Hz_INT'
+Slack : 0.330
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clock_divider:CLK_GEN|CLK_10Hz_INT'
+Slack : 0.336
+TNS   : 0.000
+
+Type  : Fast Model Hold 'PC:PC_Instance|PC[0]'
+Slack : -2.057
+TNS   : -40.403
+
+Type  : Fast Model Hold 'CLK_IN'
+Slack : -1.713
+TNS   : -1.713
+
+Type  : Fast Model Hold 'clock_divider:CLK_GEN|CLK_1Hz_INT'
+Slack : -1.706
+TNS   : -4.141
+
+Type  : Fast Model Hold 'clock_divider:CLK_GEN|CLK_1Khz_INT'
+Slack : -1.505
+TNS   : -1.505
+
+Type  : Fast Model Hold 'clock_divider:CLK_GEN|CLK_100Hz_INT'
+Slack : -1.451
+TNS   : -1.451
+
+Type  : Fast Model Hold 'clock_divider:CLK_GEN|CLK_10Hz_INT'
+Slack : -1.416
+TNS   : -1.416
+
+Type  : Fast Model Hold 'ALU_SELECT[0]'
+Slack : 1.725
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'PC:PC_Instance|PC[0]'
+Slack : 0.410
+TNS   : 0.000
+
+Type  : Fast Model Removal 'PC:PC_Instance|PC[0]'
+Slack : -1.884
+TNS   : -21.620
+
+Type  : Fast Model Minimum Pulse Width 'CLK_IN'
+Slack : -1.380
+TNS   : -17.380
+
+Type  : Fast Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_1Hz_INT'
+Slack : -0.500
+TNS   : -296.000
+
+Type  : Fast Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_100Hz_INT'
+Slack : -0.500
+TNS   : -5.000
+
+Type  : Fast Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_10Hz_INT'
+Slack : -0.500
+TNS   : -5.000
+
+Type  : Fast Model Minimum Pulse Width 'clock_divider:CLK_GEN|CLK_1Khz_INT'
+Slack : -0.500
+TNS   : -5.000
+
+Type  : Fast Model Minimum Pulse Width 'PC:PC_Instance|PC[0]'
+Slack : 0.271
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'ALU_SELECT[0]'
+Slack : 0.500
+TNS   : 0.000
+
+------------------------------------------------------------
