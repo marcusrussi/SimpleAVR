@@ -39,16 +39,24 @@ architecture rtl of single_port_rom is
 		
 		
 		-- INTIALIZE MEMORY
-		tmp(0) := "0101000000000000"; -- load mem. addr. 0 into register 16
-		tmp(1) := "0101000000010001"; -- load mem. addr. 1 into register 17
-		tmp(2) := "0000000000000000"; -- nop
-		tmp(3) := "0000000000000000"; -- nop
-		tmp(4) := "0000000000000000"; -- nop, jump to this instruction
-		tmp(5) := "0000111100000001"; -- add register 16 and 17, store to 16
-		tmp(6) := "0101111100001111"; -- store reg 16 into mem addr 127
-		tmp(7) := "0000000000000000"; -- nop
-		tmp(8) := "0000000000000000"; -- nop
-		tmp(9) := "1100111111111010"; -- jump to PC +1 = 3
+		
+		tmp(0) := "1010000000000000"; -- load mem. addr. 0 into register 16
+		tmp(1) := "1010000000010001"; -- load mem. addr. 1 into register 17
+		tmp(2) := "0010001100000001"; -- and register 16 and 17, store in 16
+		tmp(3) := "1010111100001111"; -- store into 127
+		
+		
+		
+--		tmp(0) := "0101000000000000"; -- load mem. addr. 0 into register 16
+--		tmp(1) := "0101000000010001"; -- load mem. addr. 1 into register 17
+--		tmp(2) := "0000000000000000"; -- nop
+--		tmp(3) := "0000000000000000"; -- nop
+--		tmp(4) := "0000000000000000"; -- nop, jump to this instruction
+--		tmp(5) := "0000111100000001"; -- add register 16 and 17, store to 16
+--		tmp(6) := "0101111100001111"; -- store reg 16 into mem addr 127
+--		tmp(7) := "0000000000000000"; -- nop
+--		tmp(8) := "0000000000000000"; -- nop
+--		tmp(9) := "1100111111111010"; -- jump to PC +1 = 3
 
 		return tmp;
 	end init_rom;	 

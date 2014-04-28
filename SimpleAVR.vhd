@@ -216,14 +216,6 @@ PC_Instance : PC
 
 ----------------------------------------------------------------
 --Opcodes
--- LDS (Load)					1010 0kkk dddd kkkk
--- STD (Store)					1010 1kkk dddd kkkk
--- Nop (No Op)					0000 0000 0000 0000
--- ADD (Add)					0000 11rd dddd rrrr
--- RJMPT (Relative Jump)	1100 kkkk kkkk kkkk
--- AND (Logical And)       0010 00rd dddd rrrr
--- OR (Logical Or)         0010 10rd dddd rrrr
--- XOR (Exclusive Or)      0010 01rd dddd rrrr
 -- LDS (Load)						1010 0kkk dddd kkkk
 -- STD (Store)						1010 1kkk dddd kkkk
 -- Nop (No Op)						0000 0000 0000 0000

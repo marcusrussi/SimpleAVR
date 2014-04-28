@@ -63,12 +63,12 @@ begin
 				DataOut <= SrcA or SrcB;
 			
 			--Exclusive OR  		 			----> 1000	(Marcus)
-			elsif(Sel(3 downto 0) = "0111") then	
+			elsif(Sel(3 downto 0) = "1000") then	
 				DataOut <= SrcA xor SrcB;
 				
 			-- Subtraction	
 			elsif(Sel (3 downto 0) = "0010") then
-				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_A - INPUT_B),8));
+				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_B - INPUT_A),8));
 			
 			-- Logical Shift Right 
 			elsif(Sel (3 downto 0) = "0100") then
