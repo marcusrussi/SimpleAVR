@@ -59,9 +59,11 @@ begin
 				
 			--Logical OR						----> 0111	(Marcus)
 			elsif(Sel(3 downto 0) = "0111") then
+				DataOut <= SrcA or SrcB;
 			
 			--Exclusive OR  		 			----> 1000	(Marcus)
 			elsif(Sel(3 downto 0) = "0111") then	
+				DataOut <= SrcA xor SrcB;
 				
 			end if;
 		end if;
