@@ -42,7 +42,7 @@ architecture rtl of single_port_rom is
 		
 		tmp(0) := "1010000000000000"; -- load mem. addr. 0 into register 16
 		tmp(1) := "1010000000010001"; -- load mem. addr. 1 into register 17
-		tmp(2) := "0010101100000001"; -- and register 16 and 17, store in 16
+		tmp(2) := "0000111100000001"; -- add register 16 and 17, store in 16
 		tmp(3) := "1010111100001111"; -- store into 127
 		
 		
