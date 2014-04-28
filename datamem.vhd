@@ -45,6 +45,7 @@ architecture rtl of single_port_ram_with_init is
 		tmp(0) := "00001011";
 		tmp(1) := "00001101";
 -- AND: expct.  "00001001" which is 9
+--  OR: expct.  "00001111" which is 15
 --		tmp(2) := "00000010";
 --		tmp(3) := "00000011";
 --		tmp(4) := "00000100";
