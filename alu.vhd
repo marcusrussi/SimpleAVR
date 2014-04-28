@@ -5,8 +5,19 @@ USE ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 --Opcodes for ALU
---Add ----> 1111
---Nop ----> 0000
+--Nop 								----> 0000  (Done)
+--Add without carry 				----> 0001	(Done)
+
+--Subtract without carry 		----> 0010	(Mike)
+--Multiply signed 				----> 0011	(Mike)
+--Logical Shift Left				----> 0100	(Mike)
+--Logical Shift Right 			----> 0101	(Mike)
+
+--Logical AND						----> 0110	(Marcus)
+--Logical OR						----> 0111	(Marcus)
+--Exclusive OR  					----> 1000	(Marcus)
+
+
 
 ENTITY ALU IS 
 	PORT

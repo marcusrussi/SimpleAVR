@@ -273,7 +273,7 @@ begin
 
 		
 			--Store--------------------------------------------------------------------------
-			elsif(Inst(15 downto 11) = "01011") then
+			elsif(Inst(15 downto 11) = "10101") then
 			
 			--Program Counter signals
 			PC_INPUT <= "000000000000";
@@ -294,7 +294,7 @@ begin
 			DM_in <= RF_RD1;
 			
 			--Load----------------------------------------------------------------------
-			elsif (Inst(15 downto 11) = "01010") then
+			elsif (Inst(15 downto 11) = "10100") then
 			
 			--Program Counter Signals
 			PC_INPUT <= "000000000000";
