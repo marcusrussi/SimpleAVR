@@ -42,11 +42,9 @@ architecture rtl of single_port_ram_with_init is
 		
 		
 		-- INTIALIZE MEMORY
-		tmp(0) := "00000001"; -- 1
-		tmp(1) := "00000101"; -- 5
--- AND: expct.  "00000001" which is 1
---  OR: expct.  "00000101" which is 5
--- ADD: expct.  "00011000" which is 6 or 0x06
+		tmp(0) := "00000101"; -- 5
+		tmp(1) := "00001100"; -- 12
+-- XOR: expect  "00001001", which is 9
 --		tmp(2) := "00000010";
 --		tmp(3) := "00000011";
 --		tmp(4) := "00000100";
