@@ -9,8 +9,6 @@ use ieee.numeric_std.all;
 --Add without carry 				----> 0001	(Done)
 
 --Subtract without carry 		----> 0010	(Mike)
---Multiply signed 				----> 0011	(Mike) --Fuck Never Mind
---Logical Shift Left				----> 0100	(Mike) --Doesn't need another code (Just addition)
 --Logical Shift Right 			----> 0101	(Mike)
 
 --Logical AND						----> 0110	(Marcus)
@@ -63,14 +61,14 @@ begin
 				DataOut <= SrcA or SrcB;
 			
 			--Exclusive OR  		 			----> 1000	(Marcus)
-			elsif(Sel(3 downto 0) = "0111") then	
+			elsif(Sel(3 downto 0) = "1000") then	
 				DataOut <= SrcA xor SrcB;
 				
-			-- Subtraction	
+			-- Subtraction						----> 0010 (Mike)
 			elsif(Sel (3 downto 0) = "0010") then
-				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_A - INPUT_B),8));
+				DataOut <= STD_LOGIC_VECTOR(TO_SIGNED((INPUT_B - INPUT_A),8));
 			
-			-- Logical Shift Right 
+			-- Logical Shift Right 			----> 0100 (Mike)
 			elsif(Sel (3 downto 0) = "0100") then
 				DataOut <= "0" & SrcA(7 downto 1);
 				

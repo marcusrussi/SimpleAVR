@@ -216,14 +216,7 @@ PC_Instance : PC
 
 ----------------------------------------------------------------
 --Opcodes
--- LDS (Load)					1010 0kkk dddd kkkk
--- STD (Store)					1010 1kkk dddd kkkk
--- Nop (No Op)					0000 0000 0000 0000
--- ADD (Add)					0000 11rd dddd rrrr
--- RJMPT (Relative Jump)	1100 kkkk kkkk kkkk
--- AND (Logical And)       0010 00rd dddd rrrr
--- OR (Logical Or)         0010 10rd dddd rrrr
--- XOR (Exclusive Or)      0010 01rd dddd rrrr
+
 -- LDS (Load)						1010 0kkk dddd kkkk
 -- STD (Store)						1010 1kkk dddd kkkk
 -- Nop (No Op)						0000 0000 0000 0000
@@ -232,9 +225,9 @@ PC_Instance : PC
 -- LSL (Logical Shift Left)	0000 11dd dddd dddd
 -- LSR (Logical Shift Right)	1001 010d dddd 0110
 -- RJMPT (Relative Jump)		1100 kkkk kkkk kkkk
--- AND (Logical And)       0010 00rd dddd rrrr
--- OR (Logical Or)         0010 10rd dddd rrrr
--- XOR (Exclusive Or)      0010 01rd dddd rrrr
+-- AND (Logical And)    	   0010 00rd dddd rrrr
+-- OR (Logical Or)      	   0010 10rd dddd rrrr
+-- XOR (Exclusive Or)   	   0010 01rd dddd rrrr
 	
 decode_function	: process (RESET_IN, Inst)
 begin 
