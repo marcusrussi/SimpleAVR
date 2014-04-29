@@ -33,11 +33,12 @@ ARCHITECTURE RegFile_arch OF RegFile IS
     signal reg_file : reg_array;
      
         begin process(CLK_IN, we, A3, WD3)
-        begin if(rising_edge(CLK_IN)) then
+        begin
+				if(rising_edge(CLK_IN)) then
                 if(we = '1') then
                         reg_file(A3) <= WD3;
                 end if;
-        end if;		  
+				end if;		  
         end process;
              
 					  
