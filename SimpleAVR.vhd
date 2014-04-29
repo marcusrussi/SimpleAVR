@@ -9,8 +9,8 @@ ENTITY SimpleAVR IS
 	(
 		CLK_IN    : IN  STD_LOGIC;
 		RESET_IN  : IN  STD_LOGIC;
-		LEDR      : OUT STD_LOGIC_VECTOR(9 DOWNTO 0);
-		LEDG      : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		LEDR      : OUT STD_LOGIC_VECTOR(9 DOWNTO 0); -- for debug
+		LEDG      : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); -- for debug
 		HEX0      : OUT STD_LOGIC_VECTOR(6 downto 0);
 		HEX1      : OUT STD_LOGIC_VECTOR(6 downto 0);
 		HEX2      : OUT STD_LOGIC_VECTOR(6 downto 0);
@@ -146,8 +146,8 @@ HEX2 <= hex_disp(20 downto 14);
 HEX1 <= hex_disp(13 downto 7);
 HEX0 <= hex_disp(6 downto 0);
 
-LEDG <= Inst_addr;
-LEDR <= ALU_OUT(4 downto 0) & RF_WD3(4 downto 0);
+-- LEDG <= Inst_addr; (uncomment for debug)
+-- LEDR <= ALU_OUT(4 downto 0) & RF_WD3(4 downto 0); (uncomment for debug)
 
 CLK_GEN : clock_divider
 PORT MAP(
@@ -232,8 +232,9 @@ decode_function	: process (RESET_IN, Inst)
 begin 
 		RF_We <= '0';
 		DM_we <= '0';
+		
       -- reset state when board powers on
-			if (RESET_IN = '0') then
+		if (RESET_IN = '0') then
 			
 			--Program counter signals
 			PC_INPUT <= "000000000000";
@@ -253,8 +254,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 			
-			--Add-----------------------------------------------------------------
-			elsif (Inst(15 downto 10) = "000011") then
+		--Add-----------------------------------------------------------------
+		elsif (Inst(15 downto 10) = "000011") then
 			
 			--Program counter signals 
 			PC_INPUT <= "000000000000";
@@ -276,8 +277,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 		
-			--Subtract-----------------------------------------------------------------
-			elsif (Inst(15 downto 10) = "000110") then
+		--Subtract-----------------------------------------------------------------
+		elsif (Inst(15 downto 10) = "000110") then
 			
 			--Program counter signals 
 			PC_INPUT <= "000000000000";
@@ -299,8 +300,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 		
-			--Logical Shift Right-----------------------------------------------------------------
-			elsif ((Inst(15 downto 9) = "1001010")) then
+		--Logical Shift Right-----------------------------------------------------------------
+		elsif ((Inst(15 downto 9) = "1001010")) then
 				if(Inst(3 downto 0) = "0110") then
 				
 				--Program counter signals 
@@ -323,8 +324,8 @@ begin
 				
 				end if;
 			
-			--Store--------------------------------------------------------------------------
-			elsif(Inst(15 downto 11) = "10101") then
+		--Store--------------------------------------------------------------------------
+		elsif(Inst(15 downto 11) = "10101") then
 			
 			--Program Counter signals
 			PC_INPUT <= "000000000000";
@@ -344,8 +345,8 @@ begin
 			DM_addr <= Inst(10 downto 8) & Inst(3 downto 0);
 			DM_in <= RF_RD1;
 			
-			--Load----------------------------------------------------------------------
-			elsif (Inst(15 downto 11) = "10100") then
+		--Load----------------------------------------------------------------------
+		elsif (Inst(15 downto 11) = "10100") then
 			
 			--Program Counter Signals
 			PC_INPUT <= "000000000000";
@@ -365,8 +366,8 @@ begin
 			DM_we <= '0';
 			DM_addr <= Inst(10 downto 8) & Inst(3 downto 0);
 			
-			--Jump-----------------------------------------------------------
-			elsif (Inst(15 downto 12) = "1100") then
+		--Jump-----------------------------------------------------------
+		elsif (Inst(15 downto 12) = "1100") then
 			
 			--Program Counter Signals
 			PC_INPUT <= Inst(11 downto 0);
@@ -386,8 +387,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 			
-			--And------------------------------------------------------------
-			elsif (Inst(15 downto 10) = "001000") then
+		--And------------------------------------------------------------
+		elsif (Inst(15 downto 10) = "001000") then
 			
 			--Program counter signals 
 			PC_INPUT <= "000000000000";
@@ -409,8 +410,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 			
-			--Or-------------------------------------------------------------
-			elsif (Inst(15 downto 10) = "001010") then
+		--Or-------------------------------------------------------------
+		elsif (Inst(15 downto 10) = "001010") then
 			
 			--Program counter signals 
 			PC_INPUT <= "000000000000";
@@ -432,8 +433,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 			
-			--Xor------------------------------------------------------------
-			elsif (Inst(15 downto 10) = "001001") then
+		--Xor------------------------------------------------------------
+		elsif (Inst(15 downto 10) = "001001") then
 			
 			--Program counter signals 
 			PC_INPUT <= "000000000000";
@@ -455,8 +456,8 @@ begin
 			DM_in <= "00000000";
 			DM_we <= '0';
 			
-			--Nop-------------------------------------------------------------------
-			else
+		--Nop-------------------------------------------------------------------
+		else
 		
 			--Program counter signals
 			PC_INPUT <= "000000000000";
